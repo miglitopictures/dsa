@@ -16,6 +16,12 @@ Stack createStack(int capacity) {
     return newStack;
 }
 
+void setCapacity(Stack *stack, int capacity) {
+    stack->data = realloc(stack->data, sizeof(int) * capacity);
+    if (stack->top >= capacity) stack->top = capacity-1;
+    stack->capacity = capacity;
+}
+
 bool isEmpty(Stack stack) { return stack.top == -1; }
 bool isFull(Stack stack)  { return stack.top == stack.capacity; }
 
@@ -50,6 +56,10 @@ int main() {
     push(&myStack, 23);
     push(&myStack, 2);
     push(&myStack, 60);
+    push(&myStack, 56);
+    push(&myStack, 38);
+    push(&myStack, 854);
+    push(&myStack, 33);
 
     printf("\n");
 
@@ -60,6 +70,16 @@ int main() {
 
     printf("Popping: %d\n", pop(&myStack));
     printf("Popping: %d\n", pop(&myStack));
+
+    printf("\n");
+
+    printStack(myStack);
+    printf("Tamanho do stack: %d\n", size(myStack));
+
+    printf("\n");
+
+    setCapacity(&myStack, 5);
+    printf("Setting capacity to 5\n");
 
     printf("\n");
 

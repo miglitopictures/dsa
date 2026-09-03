@@ -73,12 +73,12 @@ void freeStack(Node *head) {
     free(head);
 }
 
+// teste de implementação.
 int main() {
-
     // inicializa pilha
     Node *myStack = NULL;
-    
-    // teste de inserção (0 a 15)
+
+    // inserção (0 a 15)
     for (int i = 0; i <= 15; i++) {
         if (push(&myStack, i) == false) {
             fprintf(stderr, "Error: Could not push %d in the stack\n", i);
@@ -109,7 +109,7 @@ int main() {
 
     printf("\n");
 
-    {   // Give it a safe peek
+    {   // testando peekSafe
         int peekedValue;
         if (peekSafe(myStack, &peekedValue)) {
             printf("Peek: %d \n", peekedValue);
@@ -135,11 +135,11 @@ int main() {
     printf("\nTamalho da pilha: %d", size(myStack));
     printf("\n\n");
 
-    // teste de inserção (0 a 15)
+    // teste de inserção (15 a 30)
     for (int i = 0; i <= 15; i++) {
         if (push(&myStack, i+15) == false) {
             fprintf(stderr, "Error: Could not push %d in the stack\n", i);
-            return(EXIT_FAILURE);
+            return EXIT_FAILURE;
         }
     }
 
@@ -149,9 +149,10 @@ int main() {
     printf("\nTamalho da pilha: %d", size(myStack));
     printf("\n\n");
 
-
+    // libera a memoria
+    // nao eh super necessario nesse caso pois o programa vai terminar logo depois
     freeStack(myStack);
     myStack = NULL;
 
-    return(EXIT_SUCCESS);
+    return EXIT_SUCCESS;
 }

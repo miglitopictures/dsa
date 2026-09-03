@@ -1,3 +1,8 @@
+// Pilha
+// implementação com array
+// {A,B,C,D,E,F,G ...}
+//              ˆtop
+
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
